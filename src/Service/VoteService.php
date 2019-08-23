@@ -20,7 +20,6 @@ class VoteService
         } else {
             $this->downvote($gameId);
         }
-
     }
 
     public function upvote($gameId)

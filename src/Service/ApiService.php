@@ -22,11 +22,13 @@ class ApiService
 
     public function getNintendoGames()
     {
-        $response = $this->httpClient->request('POST',
+        $response = $this->httpClient->request(
+            'POST',
             self::IGBD_API_BASE_URL . '/games',
             [
                 'headers' => $this->getHeadersForRequest(),
-                'body' => 'fields  id, name, slug, summary, url, cover.*; where platforms = 4 & rating > 20; sort rating desc; limit 50;'
+                'body' => 'fields  id, name, slug, summary, url, cover.*;'
+                    . 'where platforms = 4 & rating > 20; sort rating desc; limit 10;'
             ]
         );
 
@@ -35,7 +37,8 @@ class ApiService
 
     public function getNintendoGame($gameId)
     {
-        $response = $this->httpClient->request('POST',
+        $response = $this->httpClient->request(
+            'POST',
             self::IGBD_API_BASE_URL . '/games',
             [
                 'headers' => $this->getHeadersForRequest(),
