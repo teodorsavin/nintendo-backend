@@ -7,6 +7,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 class ApiService
 {
     const IGBD_API_BASE_URL = 'https://api-v3.igdb.com';
+    const IGBD_GAMES_LIMIT = 10;
 
     public function __construct(HttpClientInterface $httpClient)
     {
@@ -28,7 +29,7 @@ class ApiService
             [
                 'headers' => $this->getHeadersForRequest(),
                 'body' => 'fields  id, name, slug, summary, url, cover.*;'
-                    . 'where platforms = 4 & rating > 20; sort rating desc; limit 10;'
+                    . 'where platforms = 4 & rating > 20; sort rating desc; limit ' . self::IGBD_GAMES_LIMIT . ';'
             ]
         );
 
