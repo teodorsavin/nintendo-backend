@@ -2,7 +2,7 @@
 
 ## Run Application
 
-`cp .end.dist .env`
+`cp .env.dist .env`
 
 Please add in the .env file the right credentials for the API.
 
